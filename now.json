@@ -1,0 +1,12 @@
+{
+    "version": 2,
+    "name": "mac-code-print",
+    "builds": [{ "src": "!*.js", "use": "@now/static" }],
+    "routes": [
+        {
+            "src": "/apple.9b0a77e4.png",
+            "dest": "dist/apple.9b0a77e4.png"
+        },
+        { "src": "/", "dest": "dist/index.html" }
+    ]
+}

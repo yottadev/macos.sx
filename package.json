@@ -1,0 +1,18 @@
+{
+    "name": "mac-code-snippet",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "start": "parcel src/index.pug",
+        "build": "npm run clean && parcel build --no-content-hash src/index.pug ",
+        "deploy:now": "npm run build && now",
+        "clean": "rimraf ./dist ./.cache"
+    },
+    "devDependencies": {
+        "eslint": "^6.2.2",
+        "parcel-bundler": "^1.12.3",
+        "pug": "^2.0.4",
+        "rimraf": "^3.0.0"
+    }
+}
