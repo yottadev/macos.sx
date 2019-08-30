@@ -5,7 +5,7 @@
 </h1>
 
 <h3 align="center">
-Share your stylish snippets with the world! 🍎
+Share your stylish snippets with the world!
 </h3>
 
 ## Overview
