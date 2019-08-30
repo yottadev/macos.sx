@@ -5,7 +5,7 @@
     "license": "MIT",
     "scripts": {
         "start": "parcel src/index.pug",
-        "build": "npm run clean && parcel build --no-content-hash src/index.pug ",
+        "build": "npm run clean && parcel build --no-source-maps --no-content-hash src/index.pug --public-url ./",
         "deploy:now": "npm run build && now",
         "clean": "rimraf ./dist ./.cache"
     },

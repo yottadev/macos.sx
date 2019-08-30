@@ -7,6 +7,18 @@
             "src": "/apple.9b0a77e4.png",
             "dest": "dist/apple.9b0a77e4.png"
         },
+        {
+            "src": "/src.77de5100.css",
+            "dest": "dist/src.77de5100.css"
+        },
+        {
+            "src": "/src.77de5100.js",
+            "dest": "dist/src.77de5100.js"
+        },
+        {
+            "src": "/src.c37ba8ac.css",
+            "dest": "dist/src.c37ba8ac.css"
+        },
         { "src": "/", "dest": "dist/index.html" }
     ]
 }
