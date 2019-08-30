@@ -1,7 +1,7 @@
 module.exports = {
+	parser: '@typescript-eslint/parser',
 	env: {
 		browser: true,
-		commonjs: true,
 		es6: true,
 	},
 	globals: {
@@ -10,6 +10,10 @@ module.exports = {
 	},
 	parserOptions: {
 		ecmaVersion: 2018,
+		sourceType: 'module',
+		ecmaFeatures: {
+			modules: true,
+		},
 	},
 	rules: {
 		'comma-dangle': ['error', 'always-multiline'],

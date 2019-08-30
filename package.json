@@ -10,9 +10,16 @@
         "clean": "rimraf ./dist ./.cache"
     },
     "devDependencies": {
+        "@types/codemirror": "^0.0.76",
+        "@typescript-eslint/parser": "^2.0.0",
         "eslint": "^6.2.2",
         "parcel-bundler": "^1.12.3",
         "pug": "^2.0.4",
-        "rimraf": "^3.0.0"
+        "rimraf": "^3.0.0",
+        "stylus": "^0.54.7",
+        "typescript": "^3.6.2"
+    },
+    "dependencies": {
+        "codemirror": "^5.48.4"
     }
 }
