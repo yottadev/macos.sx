@@ -1,128 +1,135 @@
+@import 'utils/cursive'
+
+font-face('Open Sans', 'assets/fonts/open-sans.woff2')
+font-face('Lobster', 'assets/fonts/lobster.woff2')
+
 slide-in-down(delay = 0)
-    opacity 0
-    animation slideInDown 1s
-    animation-fill-mode forwards
-    animation-delay delay
+	opacity 0
+	animation slideInDown 1s
+	animation-fill-mode forwards
+	animation-delay delay
 
 *
-    outline 0
-    box-sizing border-box
-    text-rendering optimizeLegibility !important
-    -webkit-font-smoothing antialiased !important
+	box-sizing border-box
 
 html, body
-    height 100%
-    font-family 'Open Sans'
+	height 100%
 
-    body
-        display flex
-        flex-direction column
-        justify-content center
-        align-items center
-        color white
-        background teal
-        overflow-x hidden
+	body
+		margin 0
+		flex-column(center, center)
+		font-family 'Open Sans'
+		color white
+		bg teal
+		overflow-x hidden
 
-        .apple-icon
-            font-size 72px
-            margin auto 0 0
-            user-select none
-            slide-in-down 0
+		.apple-icon
+			font-size 72px
+			margin auto 0 0
+			user-select none
+			slide-in-down()
 
-        .headline
-            letter-spacing 2px
-            margin-bottom 0
-            slide-in-down .5s
+		.headline
+			letter-spacing 2px
+			margin-bottom 0
+			slide-in-down 0.5s
 
-        .subtitle
-            slide-in-down 1s
-            font-weight bold
+		.subtitle
+			slide-in-down 1s
+			font-weight bold
 
-            .fancy-italic
-                font-size 24px
-                font-family 'Lobster'
-                text-decoration underline
+			.fancy-italic
+				font-size 24px
+				font-family 'Lobster'
+				text-decoration underline
 
-        .screenshot-area
-            display flex
-            flex-direction column
-            justify-content center
-            padding 36px
-            max-width 100%
+		.screenshot-area
+			flex-column center
+			padding 36px
+			max-width 100%
+			max-height 100%
 
-            .terminal-container
-                background #282a36
-                margin-top auto
-                border-radius 8px
-                box-shadow 0 0 30px alpha(#323232, 0.8)
-                overflow hidden
-                slide-in-down 1.5s
+			.terminal-container
+				bg #282a36
+				margin-top auto
+				border-radius 8px
+				box-shadow 0 0 30px alpha(#323232, 0.8)
+				overflow hidden
+				slide-in-down 1.5s
 
-                .terminal-titlebar
-                    padding 14px
+				.terminal-settings
+					padding 12px
+					bg alpha(white, 0.5)
+					position absolute
+					color black
+					width 100%
+					height calc(100% - 44px)
+					z-index 3
 
-                    [class^='btn'], [class*=' btn']
-                        width 16px
-                        height 16px
-                        border none
-                        border-radius 50%
-                        margin 0 4px
-                        outline none
+				.terminal-titlebar
+					padding 14px
 
-                        &.btn-close
-                            background crimson
-                        &.btn-maximize
-                            background gold
-                        &.btn-minimize
-                            background limegreen
+					+has-class('btn')
+						width 16px
+						height 16px
+						border none
+						border-radius 50%
+						margin 0 2px
+						outline none
 
-                .terminal-code
-                    padding 18px
+						&.btn-close
+							bg crimson
 
-                    textarea
-                        background transparent
-                        border none
-                        resize none
+						&.btn-maximize
+							bg gold
 
-                .CodeMirror
-                    font-size 18px
-                    min-width 400px
-                    font-family 'Fira Code'
-                    font-variant-ligatures additional-ligatures
-                    overflow hidden !important
+						&.btn-minimize
+							bg limegreen
 
-                    ::-webkit-scrollbar
-                        width 0px
-                        background transparent
+				.terminal-code
+					padding 18px
 
-        .screenshot-btn
-            align-self center
-            margin 24px
-            background linear-gradient(to top, darkblue, blue)
-            color white
-            border none
-            padding 12px
-            border 1px solid purple
-            border-radius 12px
-            font-size 16px
-            font-weight bold
-            slide-in-down 2s
+					textarea
+						bg transparent
+						border none
+						resize none
 
-        .footer-paragraph
-            margin-top auto
-            slide-in-down 2s
-            margin-bottom 36px
+				.CodeMirror
+					font-size 18px
+					min-width 300px
+					height auto
+					overflow hidden !important
 
-            .author-link
-                font-size 20px
-                color gainsboro
-                font-family 'Lobster'
+					::-webkit-scrollbar
+						width 0
+						bg transparent
 
+			.screenshot-btn
+				align-self center
+				margin 24px
+				bg linear-gradient(to top, darkblue, blue)
+				color white
+				border none
+				padding 12px
+				border 1px solid purple
+				border-radius 12px
+				font-size 16px
+				font-weight bold
+
+		.footer-paragraph
+			margin-top auto
+			slide-in-down 2s
+
+			.author-link
+				font-size 20px
+				color gainsboro
+				font-family 'Lobster'
 
 @keyframes slideInDown
-    from
-        opacity 0
-        transform translateY(-100px)
-    to
-        opacity 1
-        transform translateY(0)
+	from
+		opacity 0
+		transform translateY(-100px)
+
+	to
+		opacity 1
+		transform translateY(0)

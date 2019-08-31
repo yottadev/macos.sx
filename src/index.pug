@@ -1,29 +1,31 @@
 include utils/doggo
 
-<!DOCTYPE html>
-html(lang="en")
-    head
-        +charset
-        +viewport
-        +ie-support
-        title macos | sx
-        link(rel="shortcut icon" type="image/png" href="assets/apple.png")
-        +css('https://fonts.googleapis.com/css?family=Open+Sans&display=swap')
-        +css('https://fonts.googleapis.com/css?family=Lobster&amp;display=swap')
-        +css('https://fonts.googleapis.com/css?family=Fira+Code&amp;display=swap')
-        +css('index.styl')
-    body
-        h1.apple-icon 🍎
-        h1.headline macos.sx
-        p.subtitle Share your #[span.fancy-italic stylish] snippets with the world!
-        .screenshot-area
-            section.terminal-container
-                .terminal-titlebar
-                    button.btn-close
-                    button.btn-maximize
-                    button.btn-minimize
-                .terminal-code
-                    textarea
-        p.footer-paragraph Created by #[a.author-link(href="https://github.com/henriquehbr") @henriquehbr] and #[a.author-link(href="https://github.com/renanmav") @renanmav]
-
-        +js('index.ts')
+doctype html
+html(lang='en')
+	head
+		+charset
+		+viewport
+		+ie-support
+		+description('Create code snippets with the look & feel of MacOS')
+		title Code Print
+		+favicon('assets/img/apple-classic-logo.png')
+		+css('index.styl')
+	body
+		h1.apple-icon 🍎
+		h1.headline mac-code
+		p.subtitle Share your #[span.fancy-italic stylish] snippets with the world!
+		.screenshot-area
+			section.terminal-container
+				.terminal-titlebar
+					button.btn-close
+					button.btn-maximize
+					button.btn-minimize
+				//-.terminal-settings Settings
+				.terminal-code
+					textarea
+			//-button.screenshot-btn Screenshot!
+		p.footer-paragraph.
+			Created by
+			#[a.author-link(href='https://github.com/henriquehbr') @henriquehbr] and
+			#[a.author-link(href='https://github.com/renanmav') @renanmav]
+		+js('index.ts')

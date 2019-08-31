@@ -1,3 +1,5 @@
+# Dependencies directory
 node_modules
-dist
+
+# Parcel v1 cache directory (https://parceljs.org)
 .cache

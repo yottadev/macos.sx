@@ -4,27 +4,18 @@ import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/dracula.css'
 import 'codemirror/mode/jsx/jsx'
 
-const textareaContent = `
+const textareaContent: string = `
 import React from 'react'
 
-const App = () => {
-    return (
-        <div>
-            <p>Hello World</p>
-        </div>
-    )
-}
+export default () => <h1>Hello World!</h1>
 `.trim()
 
-const codeTextarea: HTMLTextAreaElement = document.querySelector(
-	'.terminal-code textarea'
-)
-
-const myCodeMirror = CodeMirror.fromTextArea(codeTextarea, {
+const codeTextarea: Element = document.querySelector('.terminal-code textarea')
+const terminalCodeMirror = CodeMirror.fromTextArea(codeTextarea, {
 	mode: 'jsx',
 	theme: 'dracula',
 	indentWithTabs: true,
 	autoCloseBrackets: true,
+	indentUnit: 4
 })
-
-myCodeMirror.getDoc().setValue(textareaContent)
+terminalCodeMirror.getDoc().setValue(textareaContent)

@@ -1,25 +1,22 @@
 {
-    "name": "mac-code-snippet",
-    "version": "1.0.0",
-    "main": "index.js",
-    "license": "MIT",
-    "scripts": {
-        "start": "parcel src/index.pug",
-        "build": "npm run clean && parcel build --no-source-maps --no-content-hash src/index.pug --public-url ./",
-        "deploy:now": "npm run build && now",
-        "clean": "rimraf ./dist ./.cache"
-    },
-    "devDependencies": {
-        "@types/codemirror": "^0.0.76",
-        "@typescript-eslint/parser": "^2.0.0",
-        "eslint": "^6.2.2",
-        "parcel-bundler": "^1.12.3",
-        "pug": "^2.0.4",
-        "rimraf": "^3.0.0",
-        "stylus": "^0.54.7",
-        "typescript": "^3.6.2"
-    },
-    "dependencies": {
-        "codemirror": "^5.48.4"
-    }
+	"name": "macos.sx",
+	"version": "0.1.0",
+	"main": "index.js",
+	"repository": "https://github.com/renanmav/macos.sx.git",
+	"author": "Henrique Borges <henriqueborgeshbr@gmail.com>",
+	"license": "MIT",
+	"scripts": {
+		"start": "parcel src/index.pug --no-source-maps --open"
+	},
+	"devDependencies": {
+		"parcel-bundler": "^1.12.3",
+		"pug": "^2.0.4",
+		"pug-lint": "^2.6.0",
+		"rimraf": "^3.0.0",
+		"stylus": "^0.54.7",
+		"typescript": "^3.6.2"
+	},
+	"dependencies": {
+		"codemirror": "^5.48.4"
+	}
 }
