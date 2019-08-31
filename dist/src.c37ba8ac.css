@@ -1,11 +1,3 @@
-@font-face {
-  font-family: 'Open Sans';
-  src: url("open-sans.e1678f33.woff2") format('woff2');
-}
-@font-face {
-  font-family: 'Lobster';
-  src: url("lobster.70545067.woff2") format('woff2');
-}
 * {
   box-sizing: border-box;
 }
@@ -25,15 +17,76 @@ body body {
   background: #008080;
   overflow-x: hidden;
 }
+html body .settings-btn,
+body body .settings-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  position: fixed;
+  left: 16px;
+  top: 16px;
+}
+html body .settings-btn:before,
+body body .settings-btn:before {
+  content: '\f013';
+  position: absolute;
+  font-size: 1.33em;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  transform-origin: 50% 50%;
+  transition: transform 0.5s;
+}
+html body .settings-btn:hover:before,
+body body .settings-btn:hover:before {
+  transform: rotateZ(180deg);
+}
+html body .settings-btn:hover .settings-btn-outer circle,
+body body .settings-btn:hover .settings-btn-outer circle {
+  stroke-dashoffset: 0;
+}
+html body .settings-btn .settings-btn-outer,
+body body .settings-btn .settings-btn-outer {
+  max-width: 50px;
+  fill: #fff;
+  transform: rotateZ(270deg);
+}
+html body .settings-btn .settings-btn-outer circle,
+body body .settings-btn .settings-btn-outer circle {
+  fill: transparent;
+  stroke: #fff;
+  stroke-width: 3;
+  stroke-dasharray: 252;
+  stroke-linecap: round;
+  stroke-dashoffset: 252;
+  transition: stroke-dashoffset 0.5s;
+}
 html body .apple-icon,
 body body .apple-icon {
   font-size: 72px;
+  position: relative;
   margin: auto 0 0;
   user-select: none;
   opacity: 0;
   animation: slideInDown 1s;
   animation-fill-mode: forwards;
   animation-delay: 0;
+}
+html body .apple-icon:after,
+body body .apple-icon:after {
+  content: attr(data-quote);
+  font-family: 'VT323';
+  font-size: 16px;
+  position: absolute;
+  color: #ffd700;
+  white-space: nowrap;
+  bottom: 0;
+  left: 50%;
+  user-select: none;
+  text-shadow: 2px 2px 0 #808000;
+  animation: pulsating 5s infinite;
 }
 html body .headline,
 body body .headline {
@@ -124,7 +177,7 @@ body body .screenshot-area .terminal-container .terminal-titlebar [class*='btn']
 }
 html body .screenshot-area .terminal-container .terminal-code,
 body body .screenshot-area .terminal-container .terminal-code {
-  padding: 18px;
+  padding: 0 18px 18px;
 }
 html body .screenshot-area .terminal-container .terminal-code textarea,
 body body .screenshot-area .terminal-container .terminal-code textarea {
@@ -144,18 +197,36 @@ body body .screenshot-area .terminal-container .CodeMirror ::-webkit-scrollbar {
   width: 0;
   background: transparent;
 }
-html body .screenshot-area .screenshot-btn,
-body body .screenshot-area .screenshot-btn {
+html body .screenshot-btn,
+body body .screenshot-btn {
+  font-family: 'Open Sans';
   align-self: center;
-  margin: 24px;
-  background: linear-gradient(to top, #00008b, #00f);
+  margin: 0 24px 24px;
+  background: linear-gradient(to top, #0000cd, #00f);
   color: #fff;
   border: none;
-  padding: 12px;
-  border: 1px solid #800080;
-  border-radius: 12px;
+  padding: 6px 12px;
+  border: 1px solid #000080;
+  border-radius: 6px;
   font-size: 16px;
   font-weight: bold;
+  letter-spacing: 1px;
+  outline: none;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0;
+  animation: slideInDown 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 2s;
+  transition: box-shadow 0.5s, transform 0.5s;
+}
+html body .screenshot-btn:hover,
+body body .screenshot-btn:hover {
+  box-shadow: 0 0 0 3px rgba(65,105,225,0.5);
+}
+html body .screenshot-btn:active,
+body body .screenshot-btn:active {
+  transform: scale(0.9);
 }
 html body .footer-paragraph,
 body body .footer-paragraph {
@@ -163,7 +234,7 @@ body body .footer-paragraph {
   opacity: 0;
   animation: slideInDown 1s;
   animation-fill-mode: forwards;
-  animation-delay: 2s;
+  animation-delay: 2.5s;
 }
 html body .footer-paragraph .author-link,
 body body .footer-paragraph .author-link {
@@ -209,5 +280,49 @@ body body .footer-paragraph .author-link {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@-moz-keyframes pulsating {
+  0% {
+    transform: scale(1) rotateZ(-15deg);
+  }
+  50% {
+    transform: scale(1.2) rotateZ(-5deg);
+  }
+  100% {
+    transform: scale(1) rotateZ(-15deg);
+  }
+}
+@-webkit-keyframes pulsating {
+  0% {
+    transform: scale(1) rotateZ(-15deg);
+  }
+  50% {
+    transform: scale(1.2) rotateZ(-5deg);
+  }
+  100% {
+    transform: scale(1) rotateZ(-15deg);
+  }
+}
+@-o-keyframes pulsating {
+  0% {
+    transform: scale(1) rotateZ(-15deg);
+  }
+  50% {
+    transform: scale(1.2) rotateZ(-5deg);
+  }
+  100% {
+    transform: scale(1) rotateZ(-15deg);
+  }
+}
+@keyframes pulsating {
+  0% {
+    transform: scale(1) rotateZ(-15deg);
+  }
+  50% {
+    transform: scale(1.2) rotateZ(-5deg);
+  }
+  100% {
+    transform: scale(1) rotateZ(-15deg);
   }
 }

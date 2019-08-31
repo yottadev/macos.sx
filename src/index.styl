@@ -1,8 +1,5 @@
 @import 'utils/cursive'
 
-font-face('Open Sans', 'assets/fonts/open-sans.woff2')
-font-face('Lobster', 'assets/fonts/lobster.woff2')
-
 slide-in-down(delay = 0)
 	opacity 0
 	animation slideInDown 1s
@@ -23,11 +20,63 @@ html, body
 		bg teal
 		overflow-x hidden
 
+		.settings-btn
+			flex-column(center, center)
+			width 48px
+			height 48px
+			position fixed
+			left 16px
+			top 16px
+
+			&:before
+				content '\f013'
+				position absolute
+				font-size 1.33em
+				font-family 'Font Awesome 5 Free'
+				font-weight 900
+				transform-origin 50% 50%
+				transition transform 0.5s
+
+			&:hover
+				&:before
+					transform rotateZ(180deg)
+
+				.settings-btn-outer circle
+					stroke-dashoffset 0
+
+			.settings-btn-outer
+				max-width 50px
+				fill white
+				transform rotateZ(270deg)
+
+				circle
+					fill transparent
+					stroke white
+					stroke-width 3
+					stroke-dasharray 252
+					stroke-linecap round
+					stroke-dashoffset 252
+					transition stroke-dashoffset 0.5s
+
 		.apple-icon
 			font-size 72px
+			position relative
 			margin auto 0 0
 			user-select none
 			slide-in-down()
+
+			&:after
+				content attr(data-quote)
+				font-family 'VT323'
+				font-size 16px
+				position absolute
+				color gold
+				white-space nowrap
+				bottom 0
+				left 50%
+				user-select none
+				text-shadow 2px 2px 0 olive
+				animation pulsating 5s infinite
 
 		.headline
 			letter-spacing 2px
@@ -87,7 +136,7 @@ html, body
 							bg limegreen
 
 				.terminal-code
-					padding 18px
+					padding 0 18px 18px
 
 					textarea
 						bg transparent
@@ -104,21 +153,34 @@ html, body
 						width 0
 						bg transparent
 
-			.screenshot-btn
-				align-self center
-				margin 24px
-				bg linear-gradient(to top, darkblue, blue)
-				color white
-				border none
-				padding 12px
-				border 1px solid purple
-				border-radius 12px
-				font-size 16px
-				font-weight bold
+		.screenshot-btn
+			font-family 'Open Sans'
+			align-self center
+			margin 0 24px 24px
+			bg linear-gradient(to top, mediumblue, blue)
+			color white
+			border none
+			padding 6px 12px
+			border 1px solid navy
+			border-radius 6px
+			font-size 16px
+			font-weight bold
+			letter-spacing 1px
+			outline none
+			overflow hidden
+			cursor pointer
+			slide-in-down 2s
+			transition box-shadow 0.5s, transform 0.5s
+
+			&:hover
+				box-shadow 0 0 0 3px alpha(royalblue, 0.5)
+
+			&:active
+				transform scale(0.9)
 
 		.footer-paragraph
 			margin-top auto
-			slide-in-down 2s
+			slide-in-down 2.5s
 
 			.author-link
 				font-size 20px
@@ -133,3 +195,13 @@ html, body
 	to
 		opacity 1
 		transform translateY(0)
+
+@keyframes pulsating
+	0%
+		transform scale(1) rotateZ(-15deg)
+
+	50%
+		transform scale(1.2) rotateZ(-5deg)
+
+	100%
+		transform scale(1) rotateZ(-15deg)

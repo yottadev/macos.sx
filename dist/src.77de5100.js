@@ -11668,6 +11668,8 @@ require("codemirror/theme/dracula.css");
 
 require("codemirror/mode/jsx/jsx");
 
+var quotes = ['this mvp was made in a evening', 'created by html programmers', 'semicolons are noise', 'arrays start at -1'];
+var appleIcon = document.querySelector('.apple-icon');
 var textareaContent = "\nimport React from 'react'\n\nexport default () => <h1>Hello World!</h1>\n".trim();
 var codeTextarea = document.querySelector('.terminal-code textarea');
 var terminalCodeMirror = codemirror_1.default.fromTextArea(codeTextarea, {
@@ -11677,7 +11679,10 @@ var terminalCodeMirror = codemirror_1.default.fromTextArea(codeTextarea, {
   autoCloseBrackets: true,
   indentUnit: 4
 });
-terminalCodeMirror.getDoc().setValue(textareaContent);
+terminalCodeMirror.getDoc().setValue(textareaContent); // Sets a random quote under the apple logo
+
+var quoteIndex = Math.round(Math.random() * Math.floor(quotes.length - 1));
+appleIcon.dataset.quote = quotes[quoteIndex];
 },{"codemirror":"../node_modules/codemirror/lib/codemirror.js","codemirror/addon/edit/closebrackets":"../node_modules/codemirror/addon/edit/closebrackets.js","codemirror/lib/codemirror.css":"../node_modules/codemirror/lib/codemirror.css","codemirror/theme/dracula.css":"../node_modules/codemirror/theme/dracula.css","codemirror/mode/jsx/jsx":"../node_modules/codemirror/mode/jsx/jsx.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -11706,7 +11711,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40409" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37761" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
