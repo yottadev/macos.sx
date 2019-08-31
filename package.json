@@ -11,12 +11,18 @@
 	},
 	"devDependencies": {
 		"@types/codemirror": "^0.0.76",
-		"codemirror": "^5.48.4",
+		"@types/dom-to-image": "^2.6.0",
+		"@types/file-saver": "^2.0.1",
 		"parcel-bundler": "^1.12.3",
 		"pug": "^2.0.4",
 		"pug-lint": "^2.6.0",
 		"rimraf": "^3.0.0",
 		"stylus": "^0.54.7",
 		"typescript": "^3.6.2"
+	},
+	"dependencies": {
+		"codemirror": "^5.48.4",
+		"dom-to-image": "^2.6.0",
+		"file-saver": "^2.0.2"
 	}
 }

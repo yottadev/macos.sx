@@ -4,6 +4,9 @@ import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/dracula.css'
 import 'codemirror/mode/jsx/jsx'
 
+import fileSaver from 'file-saver'
+import domToImage from 'dom-to-image'
+
 const quotes: string[] = [
 	'this mvp was made in a evening',
 	'created by html programmers',
@@ -12,6 +15,8 @@ const quotes: string[] = [
 ]
 
 const appleIcon: HTMLElement = document.querySelector('.apple-icon')
+const screenshotArea: HTMLElement = document.querySelector('.screenshot-area')
+const screenshotBtn: HTMLElement = document.querySelector('.screenshot-btn')
 const textareaContent: string = `
 import React from 'react'
 
@@ -36,3 +41,10 @@ terminalCodeMirror.getDoc().setValue(textareaContent)
 // Sets a random quote under the apple logo
 const quoteIndex = Math.round(Math.random() * Math.floor(quotes.length - 1))
 appleIcon.dataset.quote = quotes[quoteIndex]
+
+// Downloads the terminal screenshot as png
+screenshotBtn.addEventListener('click', () => {
+	domToImage
+		.toBlob(screenshotArea)
+		.then(blob => fileSaver.saveAs(blob, 'macos-sx-screenshot.png'))
+})
