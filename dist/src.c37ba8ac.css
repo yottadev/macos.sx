@@ -3,7 +3,7 @@
 }
 html,
 body {
-  height: 100%;
+  min-height: 100vh;
 }
 html body,
 body body {
@@ -31,7 +31,7 @@ body body .settings-btn {
 }
 html body .settings-btn:before,
 body body .settings-btn:before {
-  content: '\f013';
+  content: attr(data-icon);
   position: absolute;
   font-size: 1.33em;
   font-family: 'Font Awesome 5 Free';
@@ -67,7 +67,7 @@ html body .apple-icon,
 body body .apple-icon {
   font-size: 72px;
   position: relative;
-  margin: auto 0 0;
+  margin: 0;
   user-select: none;
   opacity: 0;
   animation: slideInDown 1s;
@@ -88,8 +88,8 @@ body body .apple-icon:after {
   text-shadow: 2px 2px 0 #808000;
   animation: pulsating 5s infinite;
 }
-html body .headline,
-body body .headline {
+html body .main-headline,
+body body .main-headline {
   letter-spacing: 2px;
   margin-bottom: 0;
   opacity: 0;
@@ -97,16 +97,17 @@ body body .headline {
   animation-fill-mode: forwards;
   animation-delay: 0.5s;
 }
-html body .subtitle,
-body body .subtitle {
+html body .main-subtitle,
+body body .main-subtitle {
   opacity: 0;
   animation: slideInDown 1s;
   animation-fill-mode: forwards;
   animation-delay: 1s;
   font-weight: bold;
+  text-align: center;
 }
-html body .subtitle .fancy-italic,
-body body .subtitle .fancy-italic {
+html body .main-subtitle .fancy-italic,
+body body .main-subtitle .fancy-italic {
   font-size: 24px;
   font-family: 'Lobster';
   text-decoration: underline;
@@ -127,6 +128,7 @@ body body .screenshot-area .terminal-container {
   border-radius: 8px;
   box-shadow: 0 0 30px rgba(50,50,50,0.8);
   overflow: hidden;
+  min-height: 250px;
   opacity: 0;
   animation: slideInDown 1s;
   animation-fill-mode: forwards;
@@ -134,17 +136,70 @@ body body .screenshot-area .terminal-container {
 }
 html body .screenshot-area .terminal-container .terminal-settings,
 body body .screenshot-area .terminal-container .terminal-settings {
-  padding: 12px;
-  background: rgba(255,255,255,0.5);
+  display: flex;
+  flex-direction: column;
+  background: #dcdcdc;
   position: absolute;
   color: #000;
   width: 100%;
   height: calc(100% - 44px);
   z-index: 3;
+  transform: translateY(calc(-100% - 44px));
+  overflow: auto;
+  transition: transform 0.8s;
+}
+html body .screenshot-area .terminal-container .terminal-settings::-webkit-scrollbar,
+body body .screenshot-area .terminal-container .terminal-settings::-webkit-scrollbar {
+  width: 12px;
+}
+html body .screenshot-area .terminal-container .terminal-settings::-webkit-scrollbar-thumb,
+body body .screenshot-area .terminal-container .terminal-settings::-webkit-scrollbar-thumb {
+  background-clip: padding-box;
+  border: 4px solid transparent;
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 8px;
+}
+html body .screenshot-area .terminal-container .terminal-settings::-webkit-scrollbar-corner,
+body body .screenshot-area .terminal-container .terminal-settings::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+html body .screenshot-area .terminal-container .terminal-settings.opened-terminal-settings,
+body body .screenshot-area .terminal-container .terminal-settings.opened-terminal-settings {
+  transform: translateY(0);
+}
+html body .screenshot-area .terminal-container .terminal-settings .settings-item,
+body body .screenshot-area .terminal-container .terminal-settings .settings-item {
+  padding: 12px 18px;
+  user-select: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+html body .screenshot-area .terminal-container .terminal-settings .settings-item:hover,
+body body .screenshot-area .terminal-container .terminal-settings .settings-item:hover {
+  background-color: rgba(128,128,128,0.3);
+}
+html body .screenshot-area .terminal-container .terminal-settings .settings-item:not(:last-child),
+body body .screenshot-area .terminal-container .terminal-settings .settings-item:not(:last-child) {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+html body .screenshot-area .terminal-container .terminal-settings .settings-item:after,
+body body .screenshot-area .terminal-container .terminal-settings .settings-item:after {
+  content: attr(data-subtitle);
+  color: rgba(0,0,0,0.5);
+  font-size: 14px;
+}
+html body .screenshot-area .terminal-container .terminal-settings .settings-item .setting-name,
+body body .screenshot-area .terminal-container .terminal-settings .settings-item .setting-name {
+  font-weight: bold;
 }
 html body .screenshot-area .terminal-container .terminal-titlebar,
 body body .screenshot-area .terminal-container .terminal-titlebar {
+  display: flex;
+  align-items: center;
+  position: relative;
   padding: 14px;
+  background: #282a36;
+  z-index: 5;
 }
 html body .screenshot-area .terminal-container .terminal-titlebar [class^='btn'],
 body body .screenshot-area .terminal-container .terminal-titlebar [class^='btn'],
@@ -174,6 +229,16 @@ body body .screenshot-area .terminal-container .terminal-titlebar [class^='btn']
 html body .screenshot-area .terminal-container .terminal-titlebar [class*='btn'].btn-minimize,
 body body .screenshot-area .terminal-container .terminal-titlebar [class*='btn'].btn-minimize {
   background: #32cd32;
+  margin-right: -48px;
+}
+html body .screenshot-area .terminal-container .terminal-titlebar .window-title,
+body body .screenshot-area .terminal-container .terminal-titlebar .window-title {
+  opacity: 0;
+  font-weight: bold;
+  user-select: none;
+  font-size: 14px;
+  margin: 0 auto;
+  transition: opacity 0.5s;
 }
 html body .screenshot-area .terminal-container .terminal-code,
 body body .screenshot-area .terminal-container .terminal-code {
@@ -218,7 +283,18 @@ body body .screenshot-btn {
   animation: slideInDown 1s;
   animation-fill-mode: forwards;
   animation-delay: 2s;
-  transition: box-shadow 0.5s, transform 0.5s;
+  transition: box-shadow 0.5s, transform 0.5s, background-color 0.5s;
+}
+html body .screenshot-btn[disabled='true'],
+body body .screenshot-btn[disabled='true'] {
+  border: 1px solid rgba(0,0,0,0.3);
+  box-shadow: none;
+  color: rgba(255,255,255,0.5);
+  background: linear-gradient(to top, rgba(32,32,32,0.5), rgba(96,96,96,0.5));
+}
+html body .screenshot-btn[disabled='true']:hover,
+body body .screenshot-btn[disabled='true']:hover {
+  box-shadow: none;
 }
 html body .screenshot-btn:hover,
 body body .screenshot-btn:hover {
@@ -228,9 +304,13 @@ html body .screenshot-btn:active,
 body body .screenshot-btn:active {
   transform: scale(0.9);
 }
+html body .screenshot-btn .btn-label,
+body body .screenshot-btn .btn-label {
+  margin-left: 6px;
+}
 html body .footer-paragraph,
 body body .footer-paragraph {
-  margin-top: auto;
+  text-align: center;
   opacity: 0;
   animation: slideInDown 1s;
   animation-fill-mode: forwards;

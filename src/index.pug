@@ -15,22 +15,34 @@ html(lang='en')
 		+css('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css')
 		+css('index.styl')
 	body
-		.settings-btn
+		.settings-btn(data-icon='')
 			svg.settings-btn-outer(viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg')
 				circle(cx='50' cy='50' r='40')
 		h1.apple-icon 🍎
-		h1.headline macos.sx
-		p.subtitle Share your #[span.fancy-italic stylish] snippets with the world!
+		h1.main-headline macos.sx
+		p.main-subtitle Share your #[span.fancy-italic stylish] snippets with the world!
 		.screenshot-area
 			section.terminal-container
 				.terminal-titlebar
 					button.btn-close
 					button.btn-maximize
 					button.btn-minimize
-				//-.terminal-settings Settings
+					.window-title Settings
+				.terminal-settings
+					.settings-item(data-subtitle='#323232')
+						.setting-name Background color
+						.setting-icon
+					.settings-item(data-subtitle='Monokai')
+						.setting-name Color theme
+						.setting-icon
+					.settings-item(data-subtitle='index.jsx')
+						.setting-name Title bar text
+						.setting-icon
 				.terminal-code
 					textarea
-		button.screenshot-btn Screenshot!
+		button.screenshot-btn
+			+font-awesome-solid('camera-retro')
+			span.btn-label Screenshot!
 		p.footer-paragraph.
 			Created by
 			#[a.author-link(href='https://github.com/henriquehbr') @henriquehbr] and

@@ -83,7 +83,6 @@ mixin css(url)
 mixin js(url)
 	script(src=url)
 
-//- Experimental
 mixin table(thead)
 	if Array.isArray(thead)
 		table
@@ -99,3 +98,12 @@ mixin tr(row)
 		tr
 			each data in row
 				td= data
+
+mixin font-awesome-brands(icon)
+	i.fab(class=`fa-${icon}`)(class=attributes.class)
+
+mixin font-awesome-solid(icon)
+	i.fas(class=`fa-${icon}`)(class=attributes.class)
+
+mixin font-awesome-regular(icon)
+	i.far(class=`fa-${icon}`)(class=attributes.class)

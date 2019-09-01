@@ -12450,28 +12450,57 @@ var file_saver_1 = __importDefault(require("file-saver"));
 
 var dom_to_image_1 = __importDefault(require("dom-to-image"));
 
-var quotes = ['this mvp was made in a evening', 'created by html programmers', 'semicolons are noise', 'arrays start at -1'];
-var appleIcon = document.querySelector('.apple-icon');
-var screenshotArea = document.querySelector('.screenshot-area');
-var screenshotBtn = document.querySelector('.screenshot-btn');
-var textareaContent = "\nimport React from 'react'\n\nexport default () => <h1>Hello World!</h1>\n".trim();
-var codeTextarea = document.querySelector('.terminal-code textarea');
-var terminalCodeMirror = codemirror_1.default.fromTextArea(codeTextarea, {
+var quotes = ['this mvp was made in a evening', 'created by html programmers', 'semicolons are noise', 'arrays start at -1', 'space sensitive syntax ftw', 'keep it simple stupid'];
+var CodeMirrorSettings = {
   mode: 'jsx',
   theme: 'dracula',
   indentWithTabs: true,
   autoCloseBrackets: true,
   indentUnit: 4
-});
-terminalCodeMirror.getDoc().setValue(textareaContent); // Sets a random quote under the apple logo
+}; // Defines DOM elements
 
-var quoteIndex = Math.round(Math.random() * Math.floor(quotes.length - 1));
-appleIcon.dataset.quote = quotes[quoteIndex]; // Downloads the terminal screenshot as png
+var settingsBtn = document.querySelector('.settings-btn');
+var appleIcon = document.querySelector('.apple-icon');
+var screenshotArea = document.querySelector('.screenshot-area');
+var terminalWindowTitle = document.querySelector('.window-title');
+var terminalSettings = document.querySelector('.terminal-settings');
+var screenshotBtn = document.querySelector('.screenshot-btn');
+var textareaContent = "import React from 'react'\n\nexport default () => <h1>Hello World!</h1>".trim();
+var codeTextarea = document.querySelector('.terminal-code textarea'); // Initialize CodeMirror instance
 
-screenshotBtn.addEventListener('click', function () {
+var terminalCodeMirror = codemirror_1.default.fromTextArea(codeTextarea, CodeMirrorSettings); // Set terminal placeholder code
+
+terminalCodeMirror.getDoc().setValue(textareaContent); // Open the settings panel
+
+function toggleTerminalSettings() {
+  if (terminalSettings.classList.contains('opened-terminal-settings')) {
+    screenshotBtn.setAttribute('disabled', 'false');
+    terminalSettings.classList.remove('opened-terminal-settings');
+    settingsBtn.dataset.icon = '';
+    terminalWindowTitle.style.opacity = '0';
+  } else {
+    terminalSettings.classList.add('opened-terminal-settings');
+    screenshotBtn.setAttribute('disabled', 'true');
+    settingsBtn.dataset.icon = '';
+    terminalWindowTitle.style.opacity = '1';
+  }
+}
+
+function downloadScreenshot() {
   dom_to_image_1.default.toBlob(screenshotArea).then(function (blob) {
     return file_saver_1.default.saveAs(blob, 'macos-sx-screenshot.png');
   });
+} // Sets a random quote under the apple logo
+
+
+var quoteIndex = Math.round(Math.random() * Math.floor(quotes.length - 1));
+appleIcon.dataset.quote = quotes[quoteIndex];
+settingsBtn.addEventListener('click', function () {
+  return toggleTerminalSettings();
+}); // Downloads the terminal screenshot as png
+
+screenshotBtn.addEventListener('click', function () {
+  return downloadScreenshot();
 });
 },{"codemirror":"../node_modules/codemirror/lib/codemirror.js","codemirror/addon/edit/closebrackets":"../node_modules/codemirror/addon/edit/closebrackets.js","codemirror/lib/codemirror.css":"../node_modules/codemirror/lib/codemirror.css","codemirror/theme/dracula.css":"../node_modules/codemirror/theme/dracula.css","codemirror/mode/jsx/jsx":"../node_modules/codemirror/mode/jsx/jsx.js","file-saver":"../node_modules/file-saver/dist/FileSaver.min.js","dom-to-image":"../node_modules/dom-to-image/src/dom-to-image.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -12501,7 +12530,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40293" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45401" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

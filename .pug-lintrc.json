@@ -1,7 +1,5 @@
 {
 	"disallowAttributeConcatenation": true,
-	"disallowAttributeTemplateString": true,
-	"disallowClassAttributeWithStaticValue": true,
 	"disallowClassLiteralsBeforeIdLiterals": true,
 	"disallowHtmlText": true,
 	"disallowLegacyMixinCall": true,
