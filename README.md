@@ -1,6 +1,6 @@
-<center>
-
-![macosx-logo](src/assets/img/macos-sx-terminal.png)
+<p align='center'>
+    <img src='src/assets/img/macos-sx-terminal.png' />
+</p>
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=plastic)](http://makeapullrequest.com)
 ![Dependencies Status](https://img.shields.io/david/dev/renanmav/macos.sx?style=plastic)
@@ -8,8 +8,6 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/renanmav/macos.sx?style=plastic)
 ![GitHub issues](https://img.shields.io/github/issues/renanmav/macos.sx?style=plastic)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed/renanmav/macos.sx?style=plastic)
-
-</center>
 
 <h3 align="center">
 Share your stylish snippets with the world!
