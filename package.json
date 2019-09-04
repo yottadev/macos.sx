@@ -1,13 +1,13 @@
 {
 	"name": "macos.sx",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"main": "index.js",
 	"repository": "https://github.com/renanmav/macos.sx.git",
 	"author": "Henrique Borges <henriqueborgeshbr@gmail.com>",
 	"license": "MIT",
 	"scripts": {
 		"start": "rimraf dist && parcel src/index.pug --no-source-maps --open",
-		"build": "rimraf dist && parcel src/index.pug --no-source-maps --public-url ."
+		"build": "rimraf dist && parcel build src/index.pug --no-source-maps --public-url ./dist && mv ./dist/index.html ./"
 	},
 	"devDependencies": {
 		"@types/codemirror": "^0.0.76",
